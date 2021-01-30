@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "181632933763",
+    "project_id": "movie-flutter-app",
+    "storage_bucket": "movie-flutter-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181632933763:android:923e53d98139166c44a0b6",
+        "android_client_info": {
+          "package_name": "com.example.movie_app_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181632933763-abhvb4gtrlm6k50tj03h8to9prrtal60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQBjLwj7WUgtE9Ij4ChfdzoV94QZ4q0Lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181632933763-abhvb4gtrlm6k50tj03h8to9prrtal60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
