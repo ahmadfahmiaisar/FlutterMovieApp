@@ -6,7 +6,8 @@ class AuthServices {
   static Future<SignInSignUpResult> signUp(String email, String password,
       String name, List<String> selectedGenres, String selectedLanguage) async {
     try {
-      UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential result = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
 
       UserModel user = result.user.convertToUser(
           name: name,
@@ -20,6 +21,21 @@ class AuthServices {
       return SignInSignUpResult(message: e.toString());
     }
   }
+
+  static Future<SignInSignUpResult> signIn(
+      String email, String password) async {
+    try {
+      UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+
+      UserModel userModel = await result.user.fromFireStore();
+
+      return SignInSignUpResult(userModel: userModel);
+    } catch (e) {
+      return SignInSignUpResult(message: e.toString());
+    }
+  }
+
 }
 
 class SignInSignUpResult {
