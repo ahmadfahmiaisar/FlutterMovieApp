@@ -5,9 +5,23 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
     if (user == null) {
-      return SignInPage();
+      if (!(prevPageEvent is GoToSplashPage)) {
+        prevPageEvent = GoToSplashPage();
+        // ignore: deprecated_member_use
+        context.bloc<PageBloc>().add(prevPageEvent);
+      }
     } else {
-      return MainPage();
+      if (!(prevPageEvent is GoToMainPage)) {
+        prevPageEvent = GoToMainPage();
+        // ignore: deprecated_member_use
+        context.bloc<PageBloc>().add(prevPageEvent);
+      }
     }
+    return BlocBuilder<PageBloc, PageState>(
+        builder: (_, pageState) => (pageState is OnSplashPage)
+            ? SplashPage()
+            : (pageState is OnLoginPage)
+                ? SignInPage()
+                : MainPage());
   }
 }
