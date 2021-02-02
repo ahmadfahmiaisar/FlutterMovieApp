@@ -3,8 +3,8 @@ part of 'pages.dart';
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    User user = Provider.of<User>(context);
-    if (user == null) {
+    User firebaseUser = Provider.of<User>(context);
+    if (firebaseUser == null) {
       if (!(prevPageEvent is GoToSplashPage)) {
         prevPageEvent = GoToSplashPage();
         // ignore: deprecated_member_use
@@ -12,6 +12,8 @@ class Wrapper extends StatelessWidget {
       }
     } else {
       if (!(prevPageEvent is GoToMainPage)) {
+        // ignore: deprecated_member_use
+        context.bloc<UserBloc>().add(LoadUser(firebaseUser.uid));
         prevPageEvent = GoToMainPage();
         // ignore: deprecated_member_use
         context.bloc<PageBloc>().add(prevPageEvent);
